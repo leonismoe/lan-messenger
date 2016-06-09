@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>登录</title>
+  <link rel="stylesheet" type="text/css" href="assets/vendor/semantic/dist/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    .header {
+      -webkit-app-region: drag;
+    }
+    body > .grid {
+      height: 100%;
+      margin: 0 !important;
+    }
+    .column {
+      max-width: 450px;
+    }
+    .close-window {
+      display: inline-block;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal header">登录</h2>
+    <form class="ui large form">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="用户名">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="密码">
+          </div>
+        </div>
+        <button type="submit" class="ui fluid large teal submit button">登录</button>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <a class="close-window" href="javascript:window.close()">关闭窗口</a>
+  </div>
+</div>
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/vendor/semantic/dist/semantic.min.js"></script>
+<script>
+$(document).ready(function() {
+  var ipc = require('electron').ipcRenderer;
+  var $btn = $('.submit');
+  var busy = false;
+
+  function resizeWindow() {
+    var $column = $('.column');
+    var width = $column.outerWidth();
+    var height = $column.outerHeight();
+    if($(document).width() < width || $(document).height() < height) {
+      window.resizeTo(width, height);
+    }
+  }
+
+  ipc.on('messenger.response', function(event, message) {
+    if(message) {
+      busy = false;
+      $form.form('add errors', [message]);
+      $btn.removeClass('loading disabled').prop('disabled', false);
+      resizeWindow();
+    }
+  });
+
+  $('.ui.form').form({
+    fields: {
+      username: {
+        identifier  : 'username',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : '请输入您的用户名'
+          },
+          {
+            type   : 'length[3]',
+            prompt : '用户名不能少于 3 个字符'
+          }
+        ]
+      },
+      password: {
+        identifier  : 'password',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : '请输入您的密码'
+          },
+          {
+            type   : 'length[6]',
+            prompt : '密码不能少于 6 个字符'
+          }
+        ]
+      }
+    },
+    onSuccess: function(event, fields) {
+      event.preventDefault();
+      if(busy) {
+        return false;
+      }
+      busy = true;
+      $btn.addClass('loading disabled').prop('disabled', true);
+      ipc.send('messenger.login', fields);
+    },
+    onFailure: function(formErrors, fields) {
+      resizeWindow();
+      return false;
+    }
+  });
+});
+</script>
+
+</body>
+</html>

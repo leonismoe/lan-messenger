@@ -1,0 +1,22 @@
+{
+  "name": "lan-messenger",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A toy for learning `socket` using Node.js and Electron",
+  "main": "client.js",
+  "scripts": {
+    "start server": "node server.js",
+    "start client": "electron ."
+  },
+  "author": "gwc0721 <gwc0721@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "dateformat": "^1.0.12",
+    "uuid": "^2.0.2"
+  },
+  "devDependencies": {
+    "devtron": "^1.1.2",
+    "electron-prebuilt": "^1.2.2"
+  }
+}

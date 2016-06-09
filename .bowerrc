@@ -1,0 +1,6 @@
+{
+  "directory": "app/assets/vendor",
+  "scripts": {
+    "postinstall": "node fix-google-fonts.js"
+  }
+}

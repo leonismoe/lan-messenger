@@ -1,0 +1,206 @@
+/* Notification */
+.template {
+  display: none !important;
+}
+.notifications {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  display: inline-block;
+  z-index: 999;
+  white-space: nowrap;
+}
+.notifications * {
+  box-sizing: initial;
+}
+.notification {
+  position: relative;
+  float: right;
+  clear: both;
+  margin: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -o-perspective: 1000px;
+  -ms-perspective: 1000px;
+  perspective: 1000px;
+  padding-bottom: 5px;
+  color: #4F4F4F;
+  font-size: 14px;
+  line-height: 20px;
+  /*border: 1px solid rgba(210, 206, 205, 0.2);*/
+}
+.notification:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.notification-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  float: left;
+  z-index: 1;
+  text-align: center;
+  background-color: #e74c3c;
+  line-height: 45px;
+  vertical-align: bottom;
+  font-size: 40px;
+  color: #fff;
+}
+.notification .body {
+  padding-left: 14px;
+  padding-right: 60px;
+  height: 40px;
+  vertical-align: middle;
+  display: table;
+  background-color: #fff;
+  left: 50px;
+  top: 0;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.notification.long .body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.notification .message {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.notification.visible {
+  max-width: 350px;
+}
+
+.notification .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 19px;
+  line-height: 13px;
+  color: #DDD;
+  padding: 7px;
+  text-decoration: none;
+}
+.notification .close:hover {
+  color: #000;
+}
+.notification .close:active, .notification .close:focus {
+  color: #AF3BFF;
+}
+.notification small {
+  color: #AAA;
+}
+.body-white .notification {
+  -webkit-box-shadow: 0 1px 9px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 1px 9px rgba(0,0,0,0.1);
+  -o-box-shadow: 0 1px 9px rgba(0,0,0,0.1);
+  -ms-box-shadow: 0 1px 9px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 9px rgba(0,0,0,0.1);
+}
+
+/* Notification select */
+.notification .select {
+  display: block;
+  padding: 10px;
+  margin-right: -32px;
+  text-decoration: none;
+  border-left: 3px solid #EEE;
+  margin-top: 1px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #666;
+}
+.notification .select:hover, .notification .select.active {
+  background-color: #007AFF;
+  border-left: 3px solid #5D68FF;
+  color: #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
+}
+.notification .select:active, .notification .select:focus {
+  background-color: #3396FF;
+  color: #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
+  border-left-color: #3396FF;
+}
+.notification .select.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.notification .select small {
+  color: inherit;
+}
+
+/* Notification types */
+.notification-ask .notification-icon {
+  background-color: #f39c12;
+}
+.notification-info .notification-icon {
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #2980b9;
+  line-height: 48px;
+}
+.notification-done .notification-icon {
+  font-size: 22px;
+  background-color: #27ae60;
+}
+
+/* Notification input */
+.notification .input {
+  padding: 6px;
+  border: 1px solid #DDD;
+  margin-left: 10px;
+  border-bottom: 2px solid #DDD;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -o-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
+  margin-right: -11px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.notification .input:focus {
+  border-color: #95a5a6;
+  outline: none;
+}
+
+.icon-success {
+  left: 6px;
+  width: 5px;
+  height: 12px;
+  border-width: 0 5px 5px 0;
+  border-style: solid;
+  border-color: #fff;
+  margin-left: 20px;
+  margin-top: 15px;
+  transform: rotate(45deg);
+}

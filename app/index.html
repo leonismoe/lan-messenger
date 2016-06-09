@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LAN Messenger</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/chat.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/notifications.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="notifications">
+    <div class="notification template">
+      <span class="notification-icon">!</span>
+      <span class="body">Test notification</span>
+      <a class="close" href="#Close">&times;</a>
+    </div>
+  </div>
+
+  <div class="ui">
+    <div class="left-menu">
+        <form action="#" class="search">
+          <input placeholder="搜索..." type="search" name="search" id="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <menu class="list-friends"></menu>
+    </div>
+    <div class="chat">
+      <div class="top">
+        <div class="avatar">
+          <img width="50" height="50" src="https://cn.gravatar.com/avatar/12fbb407bdebca1f5a112448e64f836d?s=50">
+        </div>
+        <div class="info">
+          <div class="name">弈剑秋尘</div>
+          <div class="count" data-count="0"></div>
+        </div>
+      </div>
+      <ul class="messages"></ul>
+      <div class="write-form">
+        <textarea name="text" id="texxt" rows="2"></textarea>
+        <span class="send">发送</span>
+      </div>
+    </div>
+  </div>
+
+<script type="text/template" id="template-user-list-item">
+  <li data-id="{{id}}" data-isgroup="{{isGroup}}">
+    <a href="#">
+      <img width="50" height="50" src="{{avatar_url}}">
+      <div class="info">
+        <div class="user">{{name}}</div>
+        <div class="status {{status}}">{{status_text}}</div>
+      </div>
+    </a>
+  </li>
+</script>
+
+<script type="text/template" id="template-message">
+  <li class="{{who}}">
+    <div class="head">
+      <span class="name">{{name}}</span>
+      <span class="time">{{time}}</span>
+    </div>
+    <div class="message">{{message}}</div>
+  </li>
+</script>
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/vendor/jquery.easing/js/jquery.easing.min.js"></script>
+<script src="assets/vendor/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+<script src="assets/vendor/moment/min/moment-with-locales.min.js"></script>
+<script src="assets/js/jquery.csslater.js"></script>
+<script src="assets/js/jquery.cssanim.js"></script>
+<script src="assets/js/Notifications.js"></script>
+<script src="assets/js/wrapper.js"></script>
+
+</body>
+</html>

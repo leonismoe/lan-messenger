@@ -1,0 +1,34 @@
+/releases/
+
+# Node
+node_modules/
+.npm
+.npmrc
+
+# Bower
+bower_components/
+app/assets/vendor/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.lnk
+*.tmp
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Tests
+test/unit/coverage
+test/e2e/reports
+
+# Visual Studio Code
+.vscode/

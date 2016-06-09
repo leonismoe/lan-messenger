@@ -1,0 +1,67 @@
+html, body, h1, h2, h3, h4, h5, input, textarea, keygen, select, button {
+  font-family: -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Tahoma, Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Noto Sans CJK SC DemiLight", "Source Han Sans CN", "Source Han Sans CN Regular", "Source Han Sans SC", "Source Han Sans SC Regular", "Source Han Sans", "Source Han Sans Regular", "思源黑体", "思源黑体 Regular", "Microsoft YaHei", "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Zen Hei", "ST Heiti", STXihei, "华文细黑", SimSun, "WenQuanYi Zen Hei Sharp", "宋体", Heiti, "黑体", sans-serif;
+}
+
+::-webkit-selection {
+  background-color: #cce2ff;
+  color: rgba(0,0,0,.87);
+}
+::-moz-selection {
+  background-color: #cce2ff;
+  color: rgba(0,0,0,.87);
+}
+::selection {
+  background-color: #cce2ff;
+  color: rgba(0,0,0,.87);
+}
+textarea::-webkit-selection,
+input::-webkit-selection {
+  background-color: rgba(100,100,100,.4);
+  color: rgba(0,0,0,.87);
+}
+textarea::-moz-selection,
+input::-moz-selection {
+  background-color: rgba(100,100,100,.4);
+  color: rgba(0,0,0,.87);
+}
+textarea::selection,
+input::selection {
+  background-color: rgba(100,100,100,.4);
+  color: rgba(0,0,0,.87);
+}
+
+.ui.button,
+.ui.text.container,
+.ui.header,
+.ui.input input,
+.ui.list .list > .item .header,
+.ui.list > .item .header,
+.ui.steps .step .title,
+.ui.menu,
+.ui.message .header,
+.ui.cards > .card > .content > .header,
+.ui.card > .content > .header,
+.ui.items > .item > .content > .header,
+.ui.statistics .statistic > .value,
+.ui.statistic > .value,
+.ui.statistics .statistic > .label,
+.ui.statistic > .label,
+.ui.accordion .title:not(.ui),
+.ui.modal > .header,
+.ui.popup > .header,
+.ui.search > .results .result .title,
+.ui.search > .results > .message .header,
+.ui.category.search > .results .category > .name,
+.ui.form input:not([type]),
+.ui.form input[type="date"],
+.ui.form input[type="datetime-local"],
+.ui.form input[type="email"],
+.ui.form input[type="number"],
+.ui.form input[type="password"],
+.ui.form input[type="search"],
+.ui.form input[type="tel"],
+.ui.form input[type="time"],
+.ui.form input[type="text"],
+.ui.form input[type="url"] {
+  font-family: inherit;
+}
