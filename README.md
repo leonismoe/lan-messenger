@@ -47,3 +47,9 @@ Or you should run the following commands to start the client:
 - Main UI Design: [Appon Chat Widget](https://dribbble.com/shots/1818748-Appon-Chat-Widget) by [Olia Gozha](https://dribbble.com/OliaGozha)
 - Main UI's code is modified from: [5 Живой чат / Live chat](http://codepen.io/retyui/details/zxGqPJ)
 - The notification widget is taken from [ZeroNet](https://github.com/HelloZeroNet/ZeroNet)
+
+# Snapshots
+![Server Logs](snapshots/server.png)  
+![Client Configuration Window](snapshots/client-configure.png)  
+![Client Login Window](snapshots/client-login.png)  
+![Client Main Window](snapshots/client.png)

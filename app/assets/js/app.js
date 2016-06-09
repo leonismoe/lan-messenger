@@ -1,9 +1,13 @@
-// (function() {
+(function() {
 
   'use strict';
 
   var ipc = require('electron').ipcRenderer;
+  var crypto = require('crypto');
+  window.PNGlib = require('./assets/vendor/identicon.js/pnglib');
+  window.Identicon = require('./assets/vendor/identicon.js/identicon');
   var notifications = new Notifications($('.notifications'));
+  window.notifications = notifications;
 
   var active_users = new Set();
   var active_groups = new Set();
@@ -140,21 +144,27 @@
   });
 
   ipc.on('callback.sendmsg.personal', function(event, data) {
+	  // TODO
   });
 
   ipc.on('callback.sendmsg.group', function(event, data) {
+    // TODO
   });
 
   ipc.on('callback.group.join', function(event, data) {
+    // TODO
   });
 
   ipc.on('callback.group.quit', function(event, data) {
+    // TODO
   });
 
   ipc.on('callback.group.members', function(event, data) {
+    // TODO
   });
 
   ipc.on('callback.group.participated', function(event, data) {
+    // TODO
   });
 
   ipc.on('callback.online.users', function(event, data) {
@@ -177,6 +187,11 @@
 
   ipc.on('callback.profile.my', function(event, data) {
     my = data;
+    if(!active_tab.userId && !active_tab.groupId) {
+      var $top = $('.chat > .top');
+      $top.find('.name').text(data.userId);
+      $top.find('img').attr('src', avatar_url(data.userId));
+    }
   });
 
   ipc.send('messenger.online.users');
@@ -234,9 +249,9 @@
   function parseMessage(time, name, message, myself) {
     var tpl = $msgtpl
       .replace(/{{who}}/, myself ? 'myself' : 'friend')
-      .replace(/{{time}}/, time)
-      .replace(/{{name}}/, name)
-      .replace(/{{message}}/, message);
+      .replace(/{{time}}/, htmlspecialchars(time))
+      .replace(/{{name}}/, htmlspecialchars(name))
+      .replace(/{{message}}/, htmlspecialchars(message));
     var $tpl = $(tpl);
     if(myself) {
       var $head = $tpl.find('.head');
@@ -323,7 +338,7 @@
       .replace(/{{name}}/, data.id)
       .replace(/{{status}}/, 'on')
       .replace(/{{status_text}}/, '在线')
-      .replace(/{{avatar_url}}/, 'http://lorempixel.com/50/50/people/?_=' + (new Date()).getTime());
+      .replace(/{{avatar_url}}/, avatar_url(data.id));
     $('.list-friends').append(tpl);
   }
 
@@ -378,9 +393,25 @@
     return string;
   }
 
+  function checksum(str, algorithm, encoding) {
+    return crypto
+      .createHash(algorithm || 'md5')
+      .update(str, 'utf8')
+      .digest(encoding || 'hex');
+  }
+
+  function md5(str) {
+    return checksum(str);
+  }
+
+  function avatar_url(id) {
+    var hash = md5(id);
+    var data = new Identicon(hash).toString();
+    return 'data:image/png;base64,' + data;
+  }
+
   $('form.search').on('submit', function(e) {
     e.preventDefault();
-    notifications.add('search', 'info', '这个功能还没有实现...', 3000);
   });
 
   $(document).ready(function() {
@@ -413,4 +444,4 @@
     });
   });
 
-// }).call(this);
+}).call(this);

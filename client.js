@@ -84,7 +84,9 @@ function createWindow() {
     // frame: false
   });
   window.setMenu(null);
-  // window.webContents.openDevTools();
+  if(process.env.DEBUG) {
+    window.webContents.openDevTools();
+  }
   window.loadURL(`${APP_ROOT}/index.html`);
   window.on('closed', function() {
     window = null;
